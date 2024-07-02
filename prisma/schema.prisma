@@ -1,0 +1,173 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+}
+
+model User {
+  id          String    @id @default(uuid())
+  apikey      String?   @default(uuid())
+  email       String    @unique
+  name        String
+  password    String?
+  verifyToken String    @default(uuid())
+  verified    Boolean
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  avatar      String?
+  role        String    @default("USER")
+  provider    String
+  logs        ApiLog[]
+  teams       Team[] // A user can belong to multiple teams
+  Message     Message[]
+  Chat        Chat[]
+}
+
+model Team {
+  id            String         @id @default(uuid())
+  name          String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @default(now())
+  users         User[] // A team can have multiple users
+  subscriptions Subscription[] // A team can have multiple subscriptions
+}
+
+model Subscription {
+  id                   String    @id @default(uuid())
+  stripeSubscriptionId String    @unique
+  name                 String
+  userId               String
+  priceId              String
+  status               String
+  team                 Team?     @relation(fields: [teamId], references: [id])
+  teamId               String?
+  startDate            DateTime
+  endDate              DateTime
+  totalQuota           Int       @default(0)// Total quota allocated to the user
+  usedQuota            Int       @default(0) // Quota consumed by the user
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @default(now())
+  payments             Payment[] // A subscription can have multiple payments
+}
+
+model Payment {
+  id             String       @id @default(uuid())
+  amount         Float
+  currency       String
+  status         String
+  subscription   Subscription @relation(fields: [subscriptionId], references: [id])
+  subscriptionId String
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model EmailVerification {
+  id        String   @id @default(uuid())
+  email     String
+  used      Boolean  @default(false)
+  token     String   @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ResetPassword {
+  id        String   @id @default(uuid())
+  email     String
+  used      Boolean  @default(false)
+  token     String   @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model WaitlistUser {
+  id        String   @id @default(uuid())
+  email     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Chat {
+  id        String    @id @default(uuid())
+  title     String
+  userId    String
+  messages  Message[]
+  user      User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Message {
+  id         String   @id @default(uuid())
+  chatId     String
+  chat       Chat     @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  content    String
+  serialized String
+  role       String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Company {
+  id          String      @id @default(uuid())
+  upstreamId  Int         @unique
+  name        String
+  logo        String
+  website     String
+  linkedin    String?
+  twitter     String?
+  facebook    String?
+  instagram   String?
+  jobs        Job[]
+
+  @@index([name])
+  @@index([upstreamId])
+}
+
+model Job {
+  id                String      @id @default(uuid())
+  upstreamId        Int
+  extId             String?
+  company           Company     @relation(fields: [companyId], references: [upstreamId])
+  companyId         Int
+  title             String
+  location          String
+  types             String[]
+  cities            String[]
+  countries         String[]
+  regions           String[]
+  hasRemote         Boolean
+  published         DateTime
+  description       String
+  experienceLevel   String      @db.VarChar(50)
+  applicationUrl    String
+  language          String
+  clearenceRequired Boolean
+  salaryMin         Int
+  salaryMax         Int
+  salaryCurrency    String      @db.VarChar(20)
+
+  @@index([companyId])
+  @@index([title])
+  @@index([location])
+  @@index([cities])
+  @@index([countries])
+  @@index([regions])
+  @@index([salaryMin])
+  @@index([salaryMax])
+}
+
+model ApiLog {
+  id          BigInt    @id @default(autoincrement())
+  user        User      @relation(fields: [userId], references: [id])
+  userId      String
+  timestamp   DateTime  @default(now())
+  request     String
+}

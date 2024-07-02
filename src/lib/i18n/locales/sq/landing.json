@@ -1,0 +1,225 @@
+{
+    "heroSection": {
+        "title": "Kodi Juaj i Ngritur. Produkti i Dërguar.",
+        "description": "Boilerplate-i final i SaaS, i dizajnuar për të përshpejtuar zhvillimin e aplikacionit tuaj me lehtësi dhe precizion.",
+        "usedByCopy": "Përdoret nga <b>100+</b> zhvillues",
+        "cta": "Fillo Provimin Falas",
+        "watchVideo": "Bashkohu në Kursin Intensiv",
+        "image": "/images/hero-image.jpg",
+        "usedBy": [
+            {
+                "name": "John Doe",
+                "avatar": "/images/used-by/first.jpeg"
+            },
+            {
+                "name": "John Doe",
+                "avatar": "/images/used-by/second.jpeg"
+            },
+            {
+                "name": "John Doe",
+                "avatar": "/images/used-by/third.jpeg"
+            },
+            {
+                "name": "John Doe",
+                "avatar": "/images/used-by/fourth.jpeg"
+            }
+        ]
+    },
+    "navbar": {
+        "pricing": "Çmimet",
+        "blog": "Blogu",
+        "features": "Karakteristikat",
+        "docs": "Dokumentacioni",
+        "cta": "Fillo Provimin Falas",
+        "watchVideo": "Bashkohu në Kursin Intensiv",
+        "login": "Hyrja",
+        "getStarted": "Fillo Tani"
+    },
+    "metadata": {
+        "title": "Codepilot - Seti Final i Nisjes për SaaS",
+        "description": "Gati të përshpejtoni procesin tuaj të zhvillimit?"
+    },
+    "usedBy": {
+        "title": "Përdoret Nga"
+    },
+    "ctaSection": {
+        "title": "Pse të përdoret Codepilot?",
+        "description": "Codepilot përshpejton zhvillimin duke ofruar një bazë të parakonfiguruar që kursen kohë, siguron praktikat më të mira, dhe lehtëson shkalimin, duke ju fuqizuar të fokusoheni në inovacion.",
+        "reasons": [
+            {
+                "metric": "40%",
+                "description": "Koha më e shpejtë për në treg"
+            },
+            {
+                "metric": "25%",
+                "description": "kostot më të ulëta të zhvillimit"
+            },
+            {
+                "metric": "100%",
+                "description": "rritja e produktivitetit"
+            }
+        ]
+    },
+    "features": {
+        "features": [
+            {
+                "title": "Shabllonet",
+                "description": "Codepilot ofron një gamë të gjerë shabllonesh të personalizueshme që shërbejnë si pikënisje për lloje të ndryshme aplikacionesh, duke mundësuar zhvilluesit të anashkalojnë konfigurimin fillestar dhe të hidhen drejtpërdrejt në zhvillimin e veçorive unike."
+            },
+            {
+                "title": "Praktikat e Integruara",
+                "description": "Me Codepilot, zhvilluesit përfitojnë nga praktikat më të mira të integruara për kodimin, sigurinë, dhe shkalimin. Kjo siguron që projektet jo vetëm të zhvillohen më shpejt, por gjithashtu të mbajnë standarde të larta të cilësisë dhe performancës."
+            },
+            {
+                "title": "Shkalla dhe Performanca",
+                "description": "Codepilot është dizajnuar me shkallëzim në mendje, duke lejuar që aplikacionet të rriten në mënyrë të pandërprerë në termat e bazës së përdoruesve dhe funksionalitetit. Përfshin konfigurime të optimizuara për performancë, duke siguruar që aplikacionet të mbeten të shpejta dhe reaguese ndërsa shkallëzohen."
+            }
+        ],
+        "learn-more": "Mëso më Shumë"
+    },
+    "testimonialsSection": {
+        "title": "Dëshmitë",
+        "description": "Çfarë po thonë klientët tanë për ne",
+        "testimonials": [
+            {
+                "name": "Alex Johnson",
+                "content": "Codepilot ka qenë një ndryshues loje për startup-in tonë. Reduktimi i kohës së zhvillimit na lejoi të lansojmë aplikacionin tonë javë përpara afatit, duke na dhënë një avantazh të rëndësishëm në një treg konkurrues. E rekomandoj shumë për çdo ekip që dëshiron të bëjë një shenjë shpejt",
+                "role": "CTO i StartTech Innovations",
+                "avatar": "/images/testimonials/alex-johnson.jpeg"
+            },
+            {
+                "name": "Samantha Lee",
+                "content": "Implementimi i Codepilot në rrjedhën tonë të zhvillimit ka përmirësuar ndjeshëm efikasitetin tonë. Mjediset e parakonfiguruara dhe praktikat më të mira të integruara në platformë kanë reduktuar ndjeshëm kohën tonë të përshtatjes për zhvilluesit e rinj.",
+                "role": "Menaxher i Projektit në Digital Solutions Corp.",
+                "avatar": "/images/testimonials/samanta.jpeg"
+            },
+            {
+                "name": "Ethan Rivera",
+                "content": "Si freelancer, çdo minutë llogaritet, dhe Codepilot ka qenë jetike në ndihmën time për të ofruar punë cilësore në afate të ngushta. Lehtësia e përdorimit, së bashku me opsionet e fuqishme të personalizimit, do të thotë që mund të përmbush nevojat e ndryshme të klientëve pa filluar nga zero çdo herë.",
+                "role": "Zhvillues i Pavarur i Aplikacioneve",
+                "avatar": "/images/testimonials/ethan.jpeg"
+            }
+        ]
+    },
+    "pricing": {
+        "title": "Mundësoni përvojën më të mirë",
+        "description": "Zgjidhni një plan dhe filloni provën tuaj falas 14-ditore. Gjeneroni takime dhe udhëheqje ose buroni talente në internet pa rrezik.",
+        "pro": {
+            "name": "Pro",
+            "description": "Ideal për të filluar me kanale desktop dhe për të arritur sukseset tuaja të para."
+        },
+        "enterprise": {
+            "name": "Ndërmarrje",
+            "description": "Për biznese që duan të zgjerojnë gjenerimin e udhëheqjeve dhe burimin e talenteve."
+        },
+        "personal": {
+            "name": "Personale",
+            "description": "Për individë që duan të fillojnë me kanale desktop dhe të arrijnë sukseset e tyre të para."
+        },
+        "recommended": "E Rekomanduar",
+        "monthly": "Mujore",
+        "yearly": "Vjetore",
+        "start": "Fillo",
+        "month": "Muaj",
+        "year": "Vit"
+    },
+    "footer": {
+        "description": "Codepilot përshpejton zhvillimin duke ofruar një bazë të parakonfiguruar që kursen kohë, siguron praktikat më të mira dhe lehtëson skalueshmërinë, duke ju fuqizuar të fokusoheni në inovacion.",
+        "footnote": "@%Date% Codepilot. Të gjitha të drejtat e rezervuara.",
+        "links": [
+            {
+                "title": "Shërbimet",
+                "links": [
+                    {
+                        "title": "Zhvillimi Web",
+                        "url": "/services/web-development"
+                    },
+                    {
+                        "title": "Zhvillimi Mobil",
+                        "url": "/services/mobile-development"
+                    },
+                    {
+                        "title": "Shërbimet Cloud",
+                        "url": "/cloud-services"
+                    },
+                    {
+                        "title": "Dizajni UI/UX",
+                        "url": "/ui-ux-design"
+                    }
+                ]
+            },
+            {
+                "title": "Kompania",
+                "links": [
+                    {
+                        "title": "Rreth Nesh",
+                        "url": "/about-us"
+                    },
+                    {
+                        "title": "Karrierat",
+                        "url": "/careers"
+                    },
+                    {
+                        "title": "Partnerët",
+                        "url": "/partners"
+                    },
+                    {
+                        "title": "Na Kontaktoni",
+                        "url": "/contact-us"
+                    }
+                ]
+            },
+            {
+                "title": "Ligjore",
+                "links": [
+                    {
+                        "title": "Politika e Privatësisë",
+                        "url": "/privacy-policy"
+                    },
+                    {
+                        "title": "Kushtet e Shërbimit",
+                        "url": "/terms-of-service"
+                    },
+                    {
+                        "title": "Siguria",
+                        "url": "/security"
+                    }
+                ]
+            }
+        ]
+    },
+    "faq": {
+        "title": "Pyetjet e Shpeshta",
+        "description": "Ja disa pyetje të zakonshme rreth Codepilot. Për më shumë informacion, ju lutemi kontaktoni ekipin tonë të mbështetjes.",
+        "faqs": [
+            {
+                "question": "Çfarë është Codepilot?",
+                "answer": "Codepilot është një boilerplate gjithëpërfshirëse SaaS i dizajnuar për të ndihmuar zhvilluesit të lançojnë aplikacione më shpejt duke ofruar një bazë të parakonfiguruar, duke siguruar praktikat më të mira dhe duke lehtësuar skalueshmërinë."
+            },
+            {
+                "question": "Si mund të reduktojë Codepilot kohën e zhvillimit?",
+                "answer": "Codepilot redukton kohën e zhvillimit duke ofruar modele të personalizueshme dhe mjete të fundit që eliminojnë nevojën për të ndërtuar nga e para, duke u lejuar zhvilluesve të fokusohen në krijimin e veçorive unike."
+            },
+            {
+                "question": "A është Codepilot i përshtatshëm për fillestarët?",
+                "answer": "Po, Codepilot është projektuar të jetë i lehtë për përdorim për fillestarët duke ofruar njëkohësisht veçori të avancuara për zhvilluesit me përvojë, duke e bërë atë një mjet ideal për projekte të çdo madhësie dhe kompleksiteti."
+            },
+            {
+                "question": "A mund të përdor Codepilot për projekte komerciale?",
+                "answer": "Absolutisht. Codepilot është ndërtuar për të mbështetur projekte personale dhe komerciale, duke ofruar skalueshmërinë dhe robustësinë e nevojshme për aplikacione me cilësi ndërmarrjeje."
+            },
+            {
+                "question": "Çfarë lloj mbështetjeje ofron Codepilot?",
+                "answer": "Codepilot ofron mbështetje të gjithanshme përmes dokumentacionit, një ekipi të dedikuar mbështetës, dhe një forum komuniteti ku përdoruesit mund të ndajnë njohuri dhe të kërkojnë ndihmë nga zhvillues të tjerë."
+            },
+            {
+                "question": "Sa shpesh përditësohet Codepilot?",
+                "answer": "Codepilot përditësohet rregullisht për të përfshirë trendet më të fundit në zhvillim, patchet e sigurisë, dhe reagimet nga komuniteti për të siguruar që gjendet në vijën e parë të teknologjisë."
+            },
+            {
+                "question": "A ofron Codepilot opsione për personalizim?",
+                "answer": "Po, Codepilot ofron opsione të gjerë për personalizim për të siguruar që zhvilluesit mund të përshtatin projektet e tyre për të përmbushur kërkesat specifike, duke e bërë atë një zgjidhje fleksibël për një gamë të gjerë aplikacionesh."
+            }
+        ]
+    }
+}

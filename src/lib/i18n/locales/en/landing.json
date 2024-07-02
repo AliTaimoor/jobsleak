@@ -1,0 +1,169 @@
+{
+    "heroSection": {
+        "title": "Thousands of great jobs. At your fingertip.",
+        "description": "An advanced web service offering powerful APIs for real-time, accurate job data to enhance your application's performance.",
+        "cta": "Try now",
+        "image": "/images/hero-image.jpg"
+    },
+    "navbar": {
+        "pricing": "Pricing",
+        "blog": "Blog",
+        "features": "Features",
+        "docs": "Docs",
+        "cta": "Try now",
+        "watchVideo": "Join Crash Course",
+        "login": "Login",
+        "getStarted": "Get Started"
+    },
+    "metadata": {
+        "title": "Jobsleak - Simple API for Jobs Data",
+        "description": "Looking for a datasource to fill your job board"
+    },
+    "ctaSection": {
+        "title": "Why use Jobsleak?",
+        "description": "Our platform enhances your application by providing real-time job data through easy-to-use APIs, saving development time, ensuring data accuracy, and allowing you to focus on delivering innovative solutions.",
+        "reasons": [
+            {
+                "metric": "95%",
+                "description": "Availability of real-time job data"
+            },
+            {
+                "metric": "90%",
+                "description": "Valid and accurate data"
+            },
+            {
+                "metric": "1000+",
+                "description": "New jobs daily"
+            }
+        ]
+    },
+    "features": {
+        "features": [
+            {
+                "title": "Real-Time Data Access",
+                "description": "Our platform provides instant access to the latest job listings and data, ensuring your application always has up-to-date information. This feature helps maintain the relevancy and accuracy of the job data displayed to your users.",
+                "image": "/images/data.jpg"
+            },
+            {
+                "title": "Scalable API Infrastructure",
+                "description": "Designed to handle varying loads and large volumes of data, our APIs ensure reliable performance and scalability. Whether you’re a small startup or a large enterprise, our platform can grow with your needs, providing consistent and high-quality service.",
+                "image": "/images/scale.jpg"
+            },
+            {
+                "title": "Advanced Filtering and Search",
+                "description": "With powerful filtering and search capabilities, our platform allows you to retrieve highly specific job data tailored to your application’s requirements. Users can easily find jobs that match precise criteria, improving the overall user experience and engagement.",
+                "image": "/images/filter.jpg"
+            }
+        ]
+    },
+    "testimonialsSection": {
+        "title": "Testimonials",
+        "description": "What our customers are saying about us",
+        "testimonials": [
+            {
+                "name": "Alex Johnson",
+                "content": "Codepilot has been a game-changer for our startup. The reduction in development time allowed us to launch our app weeks ahead of schedule, giving us a significant advantage in a competitive market. Highly recommend it to any team looking to make a mark fast",
+                "role": "CTO of StartTech Innovations",
+                "avatar": "/images/testimonials/alex-johnson.jpeg"
+            },
+            {
+                "name": "Samantha Lee",
+                "content": "Implementing Codepilot into our development workflow has dramatically improved our effic    iency. The pre-configured environments and best practices embedded in the platform have significantly reduced our onboarding time for new developers.",
+                "role": "Project Manager at Digital Solutions Corp.",
+                "avatar": "/images/testimonials/samanta.jpeg"
+            },
+            {
+                "name": "Ethan Rivera",
+                "content": "As a freelancer, every minute counts, and Codepilot has been instrumental in helping me deliver high-quality work on tight deadlines. The ease of use, coupled with powerful customization options, means I can cater to diverse client needs without starting from zero each time.",
+                "role": "Freelance App Developer",
+                "avatar": "/images/testimonials/ethan.jpeg"
+            }
+        ]
+    },
+    "pricing": {
+        "title": "Enable the best experience",
+        "description": "Start now and fill your job board",
+        "personal": {
+            "name": "Basic",
+            "description": ""
+        },
+        "pro": {
+            "name": "Pro",
+            "description": ""
+        },
+        "enterprise": {
+            "name": "Pro Plus",
+            "description": ""
+        },
+        "recommended": "Recommended",
+        "monthly": "Monthly",
+        "start": "Start",
+        "month": "Month",
+        "year": "Year"
+    },
+    "footer": {
+        "description": "Our platform enhances your application by providing real-time job data through easy-to-use APIs, saving development time, ensuring data accuracy, and allowing you to focus on delivering innovative solutions.",
+        "footnote": "@%Date% Jobsleak. All rights reserved.",
+        "links": [
+            {
+                "title": "Links",
+                "links": [
+                    {
+                        "title": "Home",
+                        "url": "/"
+                    },
+                    {
+                        "title": "Pricing",
+                        "url": "/#pricing"
+                    },
+                    {
+                        "title": "Features",
+                        "url": "/#features"
+                    },
+                    {
+                        "title": "Blog",
+                        "url": "/blogs"
+                    },
+                    {
+                        "title": "Docs",
+                        "url": "/docs"
+                    }
+                ]
+            }
+        ]
+    },
+    "faq": {
+        "title": "Frequently Asked Questions",
+        "description": "Here are some common questions about Jobsleak",
+        "faqs": [
+            {
+                "question": "What is this platform and how does it benefit my application?",
+                "answer": "Our platform provides robust APIs for accessing real-time job data, enabling your application to offer the most up-to-date job listings and information. This enhances your application’s functionality and user experience by ensuring data accuracy and relevancy."
+            },
+            {
+                "question": "How easy is it to integrate the APIs into my application?",
+                "answer": "Our APIs are designed for ease of integration, with fairly easy to comprehend documentation. This helps developers quickly and seamlessly integrate our job data APIs into their applications."
+            },
+            {
+                "question": "What kind of job data can I access through the APIs?",
+                "answer": "You can access a wide range of job data, including job titles, descriptions, requirements, company details, locations, and more. Our platform aggregates data from multiple sources to provide comprehensive and diverse job listings."
+            },
+            {
+                "question": "Are there any usage limits or quotas for the APIs?",
+                "answer": "Yes, there are usage limits based on the subscription plan you choose. Higher-tier plans offer higher usage quotas and additional features. Please refer to our pricing page for detailed information on the different plans and their respective limits."
+            },
+            {
+                "question": "How frequently is the job data updated?",
+                "answer": "Our job data is updated once each day, ensuring that your application gets the latest job listings and information. This helps maintain the accuracy and relevancy of the data presented to your users."
+            },
+            {
+                "question": "What security measures are in place to protect the data?",
+                "answer": "We implement industry-standard security protocols, including HTTPS for data transmission and API keys for authentication, to ensure the protection and privacy of your data. Our platform is regularly audited to maintain high-security standards."
+            },
+            {
+                "question": "Can I customize the data retrieval based on specific criteria?",
+                "answer": "Yes, our advanced filtering and search capabilities allow you to retrieve job data based on specific criteria such as location, job title, industry, and more. This helps you tailor the data to meet your application’s unique needs."
+            }
+        ]
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "sidebar": {
+        "home": "Home",
+        "ai": "AI",
+        "notifications": "Notifications",
+        "users": "Users",
+        "analytics": "Analytics",
+        "settings": "Settings",
+        "helpAndSupport": "Help & Support"
+    }
+}
