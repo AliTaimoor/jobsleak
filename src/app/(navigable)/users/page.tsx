@@ -14,7 +14,11 @@ const UsersPage = async () => {
         return redirect('/dashboard')
     }
 
-    const users = await prisma.user.findMany();
+    const users = await prisma.user.findMany({
+        include: {
+          subscription: { select: { totalQuota: true, usedQuota: true, name: true } },
+        },
+      });
 
     return (
         <UsersTable users={users} />

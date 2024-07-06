@@ -40,7 +40,7 @@ const Pagination = ({ totalPages, previousButton, previousButtonDisabled, nextBu
             {previousButton && <PaginationItem
                 disabled={previousButtonDisabled}
                 onClick={onPreviousClick} pageNumber={'Previous'} />}
-            {pageNumbers.map((pageNumber, index) => {
+            {pageNumbers.length <= 20 && pageNumbers.map((pageNumber, index) => {
                 return <PaginationItem
                     key={index} onClick={() => {
                         if (typeof pageNumber === 'number') {

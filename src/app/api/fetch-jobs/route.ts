@@ -4,22 +4,22 @@ import { NextResponse } from "next/server";
 import { Company } from '@/lib/types';
 import { PrismaClient } from '@prisma/client';
 import axios from 'axios';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiRequest } from 'next';
 
 const prisma = new PrismaClient();
 
-export default async function handler(_: NextApiRequest, res: NextApiResponse) {
-  const data = await getServerSession(authOptions);
+export async function GET(_: NextApiRequest) {
+  // const data = await getServerSession(authOptions);
 
-  if (!data?.user) {
-    return NextResponse.json({}, { status: 403 })
-  }
+  // if (!data?.user) {
+  //   return NextResponse.json({}, { status: 403 })
+  // }
   
   let apiUrl = 'https://jobdataapi.com/api/jobs/?max_age=1';
 
   try {
     while (true) {
-      const response = await axios.get(apiUrl);
+      const response = await axios.get(apiUrl, {headers: {Authorization: "Api-Key 588364f07eed4acd9777ceaca812ce"}});
   
       const jobs = [];
       const companies: Company[] = [];
@@ -55,8 +55,8 @@ export default async function handler(_: NextApiRequest, res: NextApiResponse) {
           applicationUrl: job.application_url,
           language: job.language,
           clearenceRequired: job.clearence_required,
-          salaryMin: job.salary_min,
-          salaryMax: job.salary_max,
+          salaryMin: parseInt(job.salary_min),
+          salaryMax: parseInt(job.salary_max),
           salaryCurrency: job.salary_currency
         };
   
@@ -75,10 +75,11 @@ export default async function handler(_: NextApiRequest, res: NextApiResponse) {
       }
       else break;
     } 
-    res.status(200).json({ message: 'Data fetched and stored successfully' });
+    return NextResponse.json({ message: 'Data fetched and stored successfully' });
+
   }
   catch(e) {
     console.error(e);
-    res.status(500).json({ message: e});
+    return NextResponse.json({ message: "Problem fetching jobs" }, { status: 500 });
   }
 }

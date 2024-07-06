@@ -6,27 +6,28 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
-  id          String    @id @default(uuid())
-  apikey      String?   @default(uuid())
-  email       String    @unique
-  name        String
-  password    String?
-  verifyToken String    @default(uuid())
-  verified    Boolean
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  avatar      String?
-  role        String    @default("USER")
-  provider    String
-  logs        ApiLog[]
-  teams       Team[] // A user can belong to multiple teams
-  Message     Message[]
-  Chat        Chat[]
+  id           String        @id @default(uuid())
+  apikey       String        @default(uuid())
+  email        String        @unique
+  name         String
+  password     String?
+  verifyToken  String        @default(uuid())
+  verified     Boolean
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  avatar       String?
+  role         String        @default("USER")
+  provider     String
+  subscription Subscription?
+  logs         ApiLog[]
+  teams        Team[] // A user can belong to multiple teams
+  Message      Message[]
+  Chat         Chat[]
 }
 
 model Team {
@@ -42,14 +43,15 @@ model Subscription {
   id                   String    @id @default(uuid())
   stripeSubscriptionId String    @unique
   name                 String
-  userId               String
+  user                 User      @relation(fields: [userId], references: [id])
+  userId               String    @unique
   priceId              String
   status               String
   team                 Team?     @relation(fields: [teamId], references: [id])
   teamId               String?
   startDate            DateTime
   endDate              DateTime
-  totalQuota           Int       @default(0)// Total quota allocated to the user
+  totalQuota           Int       @default(0) // Total quota allocated to the user
   usedQuota            Int       @default(0) // Quota consumed by the user
   createdAt            DateTime  @default(now())
   updatedAt            DateTime  @default(now())
@@ -116,43 +118,44 @@ model Message {
 }
 
 model Company {
-  id          String      @id @default(uuid())
-  upstreamId  Int         @unique
-  name        String
-  logo        String
-  website     String
-  linkedin    String?
-  twitter     String?
-  facebook    String?
-  instagram   String?
-  jobs        Job[]
+  id         String  @id @default(uuid())
+  upstreamId Int     @unique
+  name       String
+  logo       String
+  website    String
+  linkedin   String?
+  twitter    String?
+  facebook   String?
+  instagram  String?
+  jobs       Job[]
 
   @@index([name])
   @@index([upstreamId])
 }
 
 model Job {
-  id                String      @id @default(uuid())
+  id                String   @id @default(uuid())
   upstreamId        Int
   extId             String?
-  company           Company     @relation(fields: [companyId], references: [upstreamId])
+  company           Company  @relation(fields: [companyId], references: [upstreamId])
   companyId         Int
   title             String
-  location          String
+  location          String?
   types             String[]
   cities            String[]
   countries         String[]
   regions           String[]
-  hasRemote         Boolean
-  published         DateTime
-  description       String
-  experienceLevel   String      @db.VarChar(50)
-  applicationUrl    String
-  language          String
-  clearenceRequired Boolean
-  salaryMin         Int
-  salaryMax         Int
-  salaryCurrency    String      @db.VarChar(20)
+  hasRemote         Boolean?
+  published         DateTime?
+  description       String?
+  experienceLevel   String?   @db.VarChar(50)
+  applicationUrl    String?
+  language          String?
+  clearenceRequired Boolean?
+  salaryMin         Int?
+  salaryMax         Int?
+  salaryCurrency    String?   @db.VarChar(20)
+  creationDate      DateTime @default(now())
 
   @@index([companyId])
   @@index([title])
@@ -162,12 +165,13 @@ model Job {
   @@index([regions])
   @@index([salaryMin])
   @@index([salaryMax])
+  @@index([creationDate])
 }
 
 model ApiLog {
-  id          BigInt    @id @default(autoincrement())
-  user        User      @relation(fields: [userId], references: [id])
-  userId      String
-  timestamp   DateTime  @default(now())
-  request     String
+  id        BigInt   @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  timestamp DateTime @default(now())
+  request   String
 }

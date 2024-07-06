@@ -1,22 +1,27 @@
 "use client";
 import React from "react";
-import BarChart from "./barchart/BarChart";
-import LineChart from "./linechart/LineChart";
-import AreaChart from "./area/AreaChart";
-import PieChart from "./pie/PieChart";
 import ChartCard from "./ChartCard";
+import Past30DayUsage from "./linechart/LineChart";
+import { Last12MonthsUsageResult, Last30DaysUsageResult } from "@/lib/types";
+import Past12MonthsUsage from "./barchart/BarChart";
 
-const UserChartContainer = () => {
+interface UserChartsProps {
+  last30Days: Last30DaysUsageResult[],
+  last12Months: Last12MonthsUsageResult[]
+}
+
+const UserChartContainer = ({last30Days, last12Months}: UserChartsProps) => {
+
   const charts = [
     {
       title: "Past 30-day usage",
-      summary: "+ 17%",
-      children: <LineChart />,
+      summary: last30Days.reduce((p, a) => p + a._count, 0).toLocaleString(),
+      children: <Past30DayUsage usage={last30Days.map(l => l._count)} dates={last30Days.map(l => l.date)} />,
     },
     {
-      title: "Monthly usage",
-      summary: "135,672",
-      children: <BarChart />,
+      title: "Past 12 Month usage",
+      summary: last12Months.reduce((p, a) => p + a._count, 0).toLocaleString(),
+      children: <Past12MonthsUsage usage={last12Months.map(l => Number(l._count))} dates={last12Months.map(l => l.month)} />,
     },
   ];
   return (

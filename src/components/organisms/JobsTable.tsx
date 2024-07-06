@@ -1,132 +1,132 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Button from "@/components/atomic/button/Button";
-import Dropdown from "@/components/atomic/dropdown/Dropdown";
 import Table from "@/components/organisms/table/Table";
 import TableBody from "@/components/organisms/table/TableBody";
 import TableCell from "@/components/organisms/table/TableCell";
 import TableHead from "@/components/organisms/table/TableHead";
 import TableRow from "@/components/organisms/table/TableRow";
 import DeleteIcon from "@/icons/trash-icon.svg";
-// import { changeUserRole, deleteUser, searchUsers } from '@/app/actions/users'
-import { changeUserRole, deleteUser } from "@/app/actions/users";
 import customToast from "../atomic/toast/customToast";
 import ConfirmationModal from "../molecules/confirmation-modal/ConfirmationModal";
 import Pagination from "../molecules/pagination/Pagination";
 import {
   useReactTable,
   getCoreRowModel,
-  getPaginationRowModel,
   PaginationState,
   flexRender,
   createColumnHelper,
 } from "@tanstack/react-table";
 import Badge from "../atomic/badge/Badge";
-import { useSession } from "next-auth/react";
-import { User } from "@/lib/types";
-import AddUserModal from "../molecules/add-user-modal";
-import InputField from "../atomic/input/InputField";
-import MagnifyingGlass from "@/icons/magnifying-glass.svg";
-import useDebounce from "@/hooks/useDebounce";
+import { Job, Job_Filter } from "@/lib/types";
 import SettingsIcon from "@/icons/SettingsIcon";
 import EditUser from "../molecules/edit-user/EditUser";
+import Link from "next/link";
+import { deleteJob, getJobs } from "@/app/actions/jobs";
+import JobFilter from "../molecules/job-filter/JobFilter";
 const colors = ["primary", "red", "green", "grey", "orange", "white"];
 
-interface UsersTableProps {
-  users: User[];
+interface JobsTableProps {
+  jobs: Job[];
+  total: number;
 }
 
-const UsersTable = ({ users: defaultUsers }: UsersTableProps) => {
-  const session = useSession();
-  const [users, setUsers] = useState<User[]>(defaultUsers);
-  const [deleteUserModal, setDeleteUserModal] = useState<User | null>(null);
-  const [userModal, setUserModal] = useState(false);
-  const [editUser, setEditUser] = useState<User | null>(null);
-  const columnHelper = createColumnHelper<User>();
-  const [search, setSearch] = useState("");
-  const [searched, setSearched] = useState(false);
-  const debouncedValue = useDebounce(search, 500);
-
-  useEffect(() => {
-    (async () => {
-      if (!searched) {
-        if (!debouncedValue && debouncedValue === "") {
-          setUsers(defaultUsers);
-          return;
-        }
-        // const filteredUsers = await searchUsers(debouncedValue)
-        // setUsers(filteredUsers)
-        setSearched(true);
-      }
-    })();
-  }, [debouncedValue]);
+const JobsTable = ({
+  jobs: defaultJobs,
+  total: defaultTotal,
+}: JobsTableProps) => {
+  const [jobs, setJobs] = useState<Job[]>(defaultJobs);
+  const [totalJobs, setTotalJobs] = useState(defaultTotal);
+  const [deleteJobModal, setDeleteJobModal] = useState<Job | null>(null);
+  const [editJob, setEditJob] = useState<Job | null>(null);
+  const columnHelper = createColumnHelper<Job>();
+  const [filter, setFilter] = useState<Job_Filter>();
+  const [openFilter, setOpenFilter] = useState(false);
 
   const columns = [
-    columnHelper.accessor((row) => row.name, {
-      id: "Name",
-      cell: (info) => info.getValue(),
-      header: () => <span>Name</span>,
-      footer: (info) => info.column.id,
-    }),
-    columnHelper.accessor((row) => row.email, {
-      id: "Email",
-      cell: (info) => info.getValue(),
-      header: () => <span>Email</span>,
-      footer: (info) => info.column.id,
-    }),
-    columnHelper.accessor((row) => row.role, {
-      id: "Role",
-      cell: (info) => (
-        <Badge type="outline" color={colors[info.row.index % 6] as any}>
-          {users[info.row.index].role}
-        </Badge>
-      ),
-      header: () => <span>Role</span>,
-      footer: (info) => info.column.id,
-    }),
-    columnHelper.accessor((row) => row.subscription?.name, {
-        id: "Plan",
-        cell: (info) => info.getValue() ?? "None",
-        header: () => <span>Plan</span>,
+    columnHelper.accessor(
+      (row) => ({ id: row.upstreamId, link: row.applicationUrl }),
+      {
+        id: "ID",
+        cell: (info) => (
+          <Link href={info.getValue().link as string}>
+            {info.getValue().id}
+          </Link>
+        ),
+        header: () => <span>ID</span>,
         footer: (info) => info.column.id,
-      }),
-    columnHelper.accessor((row) => row.apikey, {
-      id: "ApiKey",
-      cell: (info) => info.getValue(),
-      header: () => <span>Api Key</span>,
+      }
+    ),
+    columnHelper.accessor((row) => row.company, {
+      id: "Company",
+      cell: (info) => info.getValue().name,
+      header: () => <span>Company</span>,
       footer: (info) => info.column.id,
     }),
-    columnHelper.accessor((row) => row.verified, {
-      id: "Verified",
+    columnHelper.accessor((row) => row.title, {
+      id: "Title",
+      cell: (info) => info.getValue(),
+      header: () => <span>Title</span>,
+      footer: (info) => info.column.id,
+    }),
+    columnHelper.accessor((row) => row.location, {
+      id: "Location",
+      cell: (info) => info.getValue(),
+      header: () => <span>Location</span>,
+      footer: (info) => info.column.id,
+    }),
+    columnHelper.accessor((row) => row.hasRemote, {
+      id: "Remote Friendly",
       cell: (info) => (
-        <Badge type="outline" color={users[info.row.index].verified ? "primary" : "red"}>
-          {users[info.row.index].verified ? "Yes" : "No"}
+        <Badge
+          type="outline"
+          color={jobs[info.row.index].hasRemote ? "primary" : "red"}
+        >
+          {jobs[info.row.index].hasRemote ? "Yes" : "No"}
         </Badge>
       ),
-      header: () => <span>Verified</span>,
+      header: () => <span>Remote Friendly</span>,
+      footer: (info) => info.column.id,
+    }),
+    columnHelper.accessor((row) => row.published, {
+      id: "Published",
+      cell: (info) => (info.getValue() as Date).toDateString(),
+      header: () => <span>Published</span>,
+      footer: (info) => info.column.id,
+    }),
+    columnHelper.accessor((row) => row.experienceLevel, {
+      id: "Experience Level",
+      cell: (info) => info.getValue(),
+      header: () => <span>Experience</span>,
+      footer: (info) => info.column.id,
+    }),
+    columnHelper.accessor((row) => row.language, {
+      id: "Language",
+      cell: (info) => info.getValue(),
+      header: () => <span>Language</span>,
       footer: (info) => info.column.id,
     }),
     columnHelper.display({
       id: "Actions",
       cell: (info) => {
-        const user = users[info.row.index];
+        const job = jobs[info.row.index];
         return (
           <div className="flex justify-start gap-2">
-            <Button
+            {/* <Button
               icon={<SettingsIcon />}
               size="md"
               onClick={() => {
-                setEditUser(user);
+                setEditJob(job);
               }}
               className="!w-fit !p-2 !min-w-fit border-red-300 bg-red-100 hover:bg-red-200 dark:bg-button-background-dark dark:hover:bg-profile-modal-border-dark"
               variant="alert"
               label=""
-            />
+            /> */}
             <Button
               icon={<DeleteIcon />}
               size="md"
               onClick={() => {
-                setDeleteUserModal(user);
+                setDeleteJobModal(job);
               }}
               className="!w-fit !p-2 !min-w-fit text-red-600 border-red-300 bg-red-100 hover:bg-red-200 dark:bg-button-background-dark dark:hover:bg-profile-modal-border-dark"
               variant="alert"
@@ -138,52 +138,83 @@ const UsersTable = ({ users: defaultUsers }: UsersTableProps) => {
       header: () => <span>Actions</span>,
     }),
   ];
+
   const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
-    pageSize: 5,
+    pageSize: 100,
   });
+
+  const getThisPageJobs = useCallback(
+    async (pageIndex: number, f?: Job_Filter) => {
+      try {
+        const j = await getJobs(pageIndex, f);
+        setTotalJobs(j.jobsCount);
+        setJobs(j.jobs);
+      } catch (error) {
+        customToast.error("Failed to fetch jobs");
+      }
+    },
+    []
+  );
+
+  useEffect(() => {
+    getThisPageJobs(pagination.pageIndex, filter);
+  }, [pagination.pageIndex, filter]);
+
   const table = useReactTable({
     columns,
-    data: users,
+    data: jobs,
     debugTable: true,
+    debugHeaders: true,
+    debugColumns: false,
+    manualPagination: true,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(), //load client-side pagination code
     onPaginationChange: setPagination,
     autoResetPageIndex: false,
     state: {
       pagination,
     },
+    rowCount: totalJobs,
   });
 
-  const handleDelete = async (userId: string) => {
+  const handleDelete = async (jobId: string) => {
     try {
-      if (session.data?.user?.id === userId) {
-        customToast.error("You cannot delete your own account");
-        return;
-      }
-      await deleteUser(userId);
-      setUsers(users.filter((user) => user.id !== userId));
-      customToast.success("User deleted successfully");
+      await deleteJob(jobId);
+      setJobs(jobs.filter((job) => job.id !== jobId));
+      customToast.success("Job deleted successfully");
     } catch (error) {
-      customToast.error("Failed to delete user");
+      customToast.error("Failed to delete job");
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-
   return (
     <div className="h-full min-h-[100vh]">
-      {editUser && (
+      {/* {editJob && (
         <EditUser user={editUser} onClose={() => setEditUser(null)} />
+      )} */}
+      {openFilter && (
+        <JobFilter
+          defaultFilter={filter}
+          open={true}
+          onClose={(f) => {
+            if (f) {
+              setFilter(f);
+              setPagination({ ...pagination, pageIndex: 0 });
+            }
+            setOpenFilter(false);
+          }}
+        />
       )}
-      {/* <div className='flex w-full justify-end my-4 '>
-                <InputField placeholder='Search' name='search' leadingIcon={<MagnifyingGlass />}
-                    id='search' value={search} onChange={(e) => {
-                        setSearched(false)
-                        setSearch(e.target.value)
-                    }} className='border-none outline-none hover:border-none focus:border-none
-                             !px-8 !shadow-none !mb-2    ' customLeadingIconClassName='!left-[8px] !top-[14px] ' />
-            </div> */}
+      <div className="flex justify-between mb-4">
+        <span>Results: {totalJobs.toLocaleString()}</span>
+        <Button
+          type="button"
+          variant="primary"
+          label="Filter"
+          className="px-8"
+          onClick={() => setOpenFilter(true)}
+        />
+      </div>
       <div className="flex flex-col gap-4">
         <Table>
           <TableHead>
@@ -223,7 +254,7 @@ const UsersTable = ({ users: defaultUsers }: UsersTableProps) => {
         </Table>
         <div className="self-end flex flex-col gap-4">
           <Pagination
-            totalPages={Math.ceil(users.length / 5)}
+            totalPages={Math.ceil(totalJobs / 100)}
             previousButton
             nextButton
             previousButtonDisabled={!table.getCanPreviousPage()}
@@ -234,19 +265,7 @@ const UsersTable = ({ users: defaultUsers }: UsersTableProps) => {
             onNextClick={() => {
               table.nextPage();
             }}
-            onPageClick={(pageNumber) => {
-              table.setPagination({
-                pageIndex: pageNumber - 1,
-                pageSize: 5,
-              });
-            }}
           />
-          {/* <Button
-            label="Add User"
-            className="w-fit self-end"
-            variant="primary"
-            onClick={() => setUserModal(true)}
-          /> */}
         </div>
       </div>
       <ConfirmationModal
@@ -258,30 +277,29 @@ const UsersTable = ({ users: defaultUsers }: UsersTableProps) => {
             <DeleteIcon />
           </div>
         }
-        isOpen={deleteUserModal !== null}
-        onClose={() => setDeleteUserModal(null)}
-        title="Delete user?"
+        isOpen={deleteJobModal !== null}
+        onClose={() => setDeleteJobModal(null)}
+        title="Delete job?"
         description="This action is irreversible"
       >
         <>
           <Button
             variant="secondary"
             label="Cancel"
-            onClick={() => setDeleteUserModal(null)}
+            onClick={() => setDeleteJobModal(null)}
           />
           <Button
             variant="alert"
-            label="Delete User"
+            label="Delete Job"
             onClick={() => {
-              handleDelete(deleteUserModal!.id);
-              setDeleteUserModal(null);
+              handleDelete(deleteJobModal!.id);
+              setDeleteJobModal(null);
             }}
           />
         </>
       </ConfirmationModal>
-      {userModal && <AddUserModal onClose={() => setUserModal(false)} />}
     </div>
   );
 };
 
-export default UsersTable;
+export default JobsTable;

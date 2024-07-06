@@ -31,13 +31,14 @@ const siteUrls: SiteUrls = {
         },
         docs: {
             label: "navbar.docs",
-            url: "https://docs.codepilot.dev",
+            url: "https://documenter.getpostman.com/view/23076656/2sA3e1AVWi",
         }
     },
     general: {
         home: '/',
         dashboard: '/dashboard',
-        docs: "https://docs.Codepilot.dev",
+        jobs: '/jobs',
+        docs: "https://documenter.getpostman.com/view/23076656/2sA3e1AVWi",
         login: '/login',
         logout: '/logout',
         register: '/register',

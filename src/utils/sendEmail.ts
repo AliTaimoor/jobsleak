@@ -26,10 +26,10 @@ export const sendVerificationEmail = async ({
   }
   try {
     const data = await resend.emails.send({
-      from: 'noreply <noreply@codepilot.dev>',
+      from: 'Jobsleak <noreply@jobsleak.com>',
       to: [to],
       subject: subject,
-      react: VerificationEmail({ confirmationEmail: `${platformConfig.variables.NEXT_URL}/verify?token=${token}`, name: name, organizationName: "Codepilot" }) as React.ReactElement,
+      react: VerificationEmail({ confirmationEmail: `${platformConfig.variables.NEXT_URL}/verify?token=${token}`, name: name, organizationName: "Jobsleak" }) as React.ReactElement,
     });
     return { success: true, data: data }
   } catch (error: any) {
@@ -110,11 +110,11 @@ export const sendInviteUserEmail = async ({
   }
   try {
     const data = await resend.emails.send({
-      from: 'noreply <noreply@codepilot.dev>',
+      from: 'Jobsleak <noreply@jobsleak.com>',
       to: [to],
       subject: subject,
       react: InviteUserEmailTemplate({
-        acceptInviteLink: `${platformConfig.variables.NEXT_URL}/accept-invite?token=${token}`, organizationName: "Codepilot"
+        acceptInviteLink: `${platformConfig.variables.NEXT_URL}/accept-invite?token=${token}`, organizationName: "Jobsleak"
       }) as React.ReactElement,
     });
     return { success: true, data: data }

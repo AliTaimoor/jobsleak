@@ -22,6 +22,26 @@ export enum Roles {
     ADMIN = "ADMIN"
 }
 
+export interface User {
+    id: string;
+    apikey: string;
+    email: string;
+    name: string;
+    password: string | null;
+    verifyToken: string;
+    verified: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+    avatar: string | null;
+    role: string;
+    provider: string;
+    subscription: {
+        name: string;
+        totalQuota: number;
+        usedQuota: number;
+    } | null
+}
+
 export interface Company {
     upstreamId: number;
     name: string;
@@ -34,48 +54,57 @@ export interface Company {
 }
 
 export interface Job {
-    id: number;
-    ext_id: string;
+    id: string;
+    upstreamId: number;
+    extId?: string | null;
     company: Company;
     title: string;
-    location: string;
-    types: [{ id: number; name: string }];
-    cities: [{
-        geonameid: number;
-        asciiname: string;
-        name: string;
-        country: {
-            code: string;
-            name: string;
-            region: {
-                id: 2;
-                name: string
-            }
-        };
-        timezone: string;
-        latitude: string;
-        longitude: string
-    }];
-    countries: [{
-        code: string;
-        name: string;
-        region: {
-            id: number;
-            name: string;
-        }
-    }];
-    regions: [{
-        id: number;
-        name: string
-    }];
-    has_remote: boolean;
-    published: string;
-    description: string;
-    experience_level: string;
-    application_url: string;
-    language: string;
-    clearence_required: string;
-    salary_min: string;
-    salary_max: string;
-    salary_currency: string;
+    location?: string | null;
+    types: string[];
+    cities: string[];
+    countries: string[];
+    regions: string[];
+    hasRemote?: boolean | null;
+    published?: Date | null;
+    description?: string | null;
+    experienceLevel?: string | null;
+    applicationUrl?: string | null;
+    language?: string | null;
+    clearenceRequired?: boolean | null;
+    salaryMin?: number | null;
+    salaryMax?: number | null;
+    salaryCurrency?: string | null;
 }
+
+export interface Job_Filter {
+    creationDateStart?: Date;
+    creationDateEnd?: Date;
+    upstreamIdFrom?: number;
+    upstreamIdTo?: number;
+    company?: string;
+    title?: string;
+    location?: string;
+    type?: string;
+    city?: string;
+    country?: string;
+    region?: string;
+    hasRemote?: boolean;
+    publishedSince?: Date;
+    publishedUntil?: Date;
+    experienceLevel?: string;
+    language?: string;
+    clearenceRequired?: boolean;
+    salaryMin?: number;
+    salaryMax?: number;
+    salaryCurrency?: string;
+}
+
+export type Last30DaysUsageResult = {
+    date: Date;
+    _count: number;
+};
+
+export type Last12MonthsUsageResult = {
+    month: Date;
+    _count: number;
+};

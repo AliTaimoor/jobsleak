@@ -23,6 +23,7 @@ interface SidebarLink {
 
 const sidebarLinks: SidebarLink[] = [
   { label: "home", path: "/dashboard", iconSrc: <HomeIcon /> },
+  { label: "jobs", path: "/jobs", iconSrc: <InboxIcon />, adminRoute: true },
   // { label: "notifications", path: "/notifications", iconSrc: <InboxIcon /> },
   // {
   //   label: "users",

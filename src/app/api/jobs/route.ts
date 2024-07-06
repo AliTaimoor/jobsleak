@@ -38,8 +38,17 @@ export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
   const title = searchParams.get("title");
   const location = searchParams.get("location");
-  const max_age = searchParams.get("max_age");
+  const company = searchParams.get("company");
+  const type = searchParams.get("type");
+  const country = searchParams.get("country");
+  const city = searchParams.get("city");
+  const region = searchParams.get("region");
+  const hasRemote = searchParams.get("hasRemote");
+  const experienceLevel = searchParams.get("experienceLevel");
+  const language = searchParams.get("language");
+  const clearenceRequired = searchParams.get("clearenceRequired");
   const min_salary = searchParams.get("min_salary");
+  const max_salary = searchParams.get("max_salary");
   const published_since = searchParams.get("published_since");
   const published_until = searchParams.get("published_until");
   const salary_currency = searchParams.get("salary_currency");
@@ -48,27 +57,63 @@ export async function GET(req: NextRequest) {
   const titles = title ? title.split('|OR|') : undefined;
   const locations = location ? location.split('|OR|') : undefined;
 
-  let from_date: Date | undefined = undefined;
-  if (max_age) {
-    from_date = new Date();
-    from_date.setDate(from_date.getDate() - parseInt(max_age));
-  }
 
-  const jobs = await prisma.job.findMany({
-    where: {
-      AND: [
-        title ? { OR: titles?.map(t => ({ title: { contains: t } })) } : {},
-        location ? { OR: locations?.map(l => ({ location: { contains: l } })) } : {},
-        max_age ? { published: { gte: from_date } } : {},
-        min_salary ? { salaryMin: { gte: Number(min_salary) } } : {},
-        published_since ? { published: { gte: new Date(published_since) } } : {},
-        published_until ? { published: { lte: new Date(published_until) } } : {},
-        salary_currency ? { salaryCurrency: salary_currency } : {},
-      ].filter(Boolean),
-    },
-    take: 100,
-    skip: page ? (Number(page) - 1) * 100 : 0
-  });
+  let companiesIds: number[] = [];
+  if (company) {
+    const data = await prisma.company.findMany({ where: { name: { contains: company, mode: "insensitive" } }, select: { upstreamId: true } });
+    companiesIds = data.map(d => d.upstreamId);
+  }
+  const query = {
+    AND: [
+      company ? { companyId: { in: companiesIds } } : {},
+      title ? { OR: titles?.map(t => ({ title: { contains: t } })) } : {},
+      location ? { OR: locations?.map(l => ({ location: { contains: l } })) } : {},
+      type ? { types: { has: type } } : {},
+      city ? { cities: { has: city } } : {},
+      country ? { countries: { has: country } } : {},
+      region ? { regions: { has: region } } : {},
+      hasRemote ? { hasRemote: hasRemote === "true" } : {},
+      published_since ? { published: { gte: new Date(published_since) } } : {},
+      published_until ? { published: { gte: new Date(published_until) } } : {},
+      experienceLevel ? { experienceLevel: experienceLevel } : {},
+      language ? { language: language } : {},
+      clearenceRequired ? { clearenceRequired: clearenceRequired === "true" } : {},
+      min_salary ? { salaryMin: { gte: parseFloat(min_salary) } } : {},
+      max_salary ? { salaryMax: { lte: parseFloat(max_salary) } } : {},
+      salary_currency ? { salaryCurrency: salary_currency } : {},
+    ].filter(Boolean),
+  };
+  const [jobsCount, jobs] = await Promise.all([
+    prisma.job.count({
+      where: query
+    }),
+    await prisma.job.findMany({
+      select: {
+        id: true,
+        company: { select: { name: true, logo: true, website: true} },
+        title: true,
+        location: true,
+        types: true,
+        cities: true,
+        countries: true,
+        regions: true,
+        hasRemote: true,
+        published: true,
+        description: true,
+        experienceLevel: true,
+        applicationUrl: true,
+        language: true,
+        clearenceRequired: true,
+        salaryMin: true,
+        salaryMax: true,
+        salaryCurrency: true,
+      },
+      where: query,
+      orderBy: { creationDate: "asc" },
+      skip: (page ? parseInt(page) : 0) * 100,
+      take: 100
+    })
+  ])
 
   await prisma.apiLog.create({
     data: {
@@ -79,7 +124,5 @@ export async function GET(req: NextRequest) {
   });
 
   await prisma.subscription.update({ where: { id: subscription.id }, data: { usedQuota: { increment: 1 } } });
-
-  return NextResponse.json(jobs);
-
+  return NextResponse.json({ count: jobsCount, jobs: jobs });
 }

@@ -9,7 +9,7 @@
         "pricing": "Pricing",
         "blog": "Blog",
         "features": "Features",
-        "docs": "Docs",
+        "docs": "API Docs",
         "cta": "Try now",
         "watchVideo": "Join Crash Course",
         "login": "Login",
@@ -125,8 +125,8 @@
                         "url": "/blogs"
                     },
                     {
-                        "title": "Docs",
-                        "url": "/docs"
+                        "title": "API Docs",
+                        "url": "https://documenter.getpostman.com/view/23076656/2sA3e1AVWi"
                     }
                 ]
             }
