@@ -109,10 +109,10 @@ export default function LoginPage() {
     return (
         <FormContainer onSubmit={handleSubmit(onSubmit)}>
 
-            <Link href={siteUrls.general.home}>
+            {/* <Link href={siteUrls.general.home}>
                 <Image src="/images/logo.svg" alt="logo" width={150} height={50} className='dark:hidden' />
                 <Image src="/images/logo-dark.svg" alt="logo" width={150} height={50} className='hidden dark:block' />
-            </Link>
+            </Link> */}
             <div className='flex flex-col gap-8'>
                 <div>
 
@@ -184,7 +184,7 @@ export default function LoginPage() {
                         </div>
                     </div>
                 </div>
-                <div className="relative flex  items-center py-3">
+                {/* <div className="relative flex  items-center py-3">
                     <div className="flex-grow border-t border-grey-400 dark:border-line-dark"></div>
                     <span className="flex-shrink mx-4 text-sm text-grey-400 dark:text-placeholder-dark">OR</span>
                     <div className="flex-grow border-t border-grey-400 dark:border-line-dark"></div>
@@ -193,7 +193,7 @@ export default function LoginPage() {
                     <div className='flex gap-2 flex-col'>
                         <AuthButton onClick={() => { signIn('google', { callbackUrl: `/dashboard${appendParams(searchParams)}` }) }} content={t("loginPage.signWithGoogle")} icon={<GoogleIcon />} />
                     </div>
-                </div>
+                </div> */}
             </div>
         </FormContainer>
 

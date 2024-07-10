@@ -8,16 +8,16 @@ const platformConfig = {
   stripe: {
     plans: [
       {
-        "name": "Pro",
-        "price_id": "price_1PVtlZKVzPXKk9Peb8cDMeZv"
+        "name": "Basic",
+        price_id: process.env.NEXT_PUBLIC_STRIPE_BASIC_PLAN_ID
       },
       {
-        name: "Business",
-        price_id: "price_1PVtlMKVzPXKk9PezDLgqHsF"
+        name: "Pro",
+        price_id: process.env.NEXT_PUBLIC_STRIPE_PRO_PLAN_ID
       },
       {
-        name: "Premium",
-        price_id: "price_1PVtjlKVzPXKk9PemGB6A5ZI"
+        name: "Pro Plus",
+        price_id: process.env.NEXT_PUBLIC_STRIPE_PRO_PLUS_PLAN_ID
       },
     ]
   },
@@ -33,19 +33,22 @@ const platformConfig = {
         name: "Basic",
         price: 29,
         description: "Ideal for getting started with desktop funnels and achieving your first successes.",
-        planId: "price_1PVtlZKVzPXKk9Peb8cDMeZv",
+        planId: process.env.NEXT_PUBLIC_STRIPE_BASIC_PLAN_ID,
+        quota: 2000
       },
       pro: {
         name: "Pro",
         price: 59,
         description: "Ideal for getting started with desktop funnels and achieving your first successes.",
-        planId: "price_1PVtlMKVzPXKk9PezDLgqHsF"
+        planId: process.env.NEXT_PUBLIC_STRIPE_PRO_PLAN_ID,
+        quota: 5000
       },
       proPlus: {
         name: "Pro Plus",
         price: 99,
         description: "Ideal for getting started with desktop funnels and achieving your first successes.",
-        planId: "price_1PVtjlKVzPXKk9PemGB6A5ZI"
+        planId: process.env.NEXT_PUBLIC_STRIPE_PRO_PLUS_PLAN_ID,
+        quota: 1000000000
       },
     },
     features: [
@@ -80,9 +83,9 @@ const platformConfig = {
     NEXT_AUTH_SECRET: process.env.NEXT_AUTH_SECRET,
     NEXT_URL: process.env.NEXT_URL,
     NEXT_PUBLIC_STRAPI_API_URL_LOCAL: process.env.NEXT_PUBLIC_STRAPI_API_URL_LOCAL,
+    NEXT_PUBLIC_STRIPE_BASIC_PLAN_ID: process.env.NEXT_PUBLIC_STRIPE_BASIC_PLAN_ID,
     NEXT_PUBLIC_STRIPE_PRO_PLAN_ID: process.env.NEXT_PUBLIC_STRIPE_PRO_PLAN_ID,
-    NEXT_PUBLIC_STRIPE_BUSINESS_PLAN_ID: process.env.NEXT_PUBLIC_STRIPE_BUSINESS_PLAN_ID,
-    NEXT_PUBLIC_STRIPE_PREMIUM_PLAN_ID: process.env.NEXT_PUBLIC_STRIPE_PREMIUM_PLAN_ID,
+    NEXT_PUBLIC_STRIPE_PRO_PLUS_PLAN_ID: process.env.NEXT_PUBLIC_STRIPE_PRO_PLUS_PLAN_ID,
     NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID,
     GOOGLE_ANALYTICS_ENABLED: process.env.GOOGLE_ANALYTICS_ENABLED,
     TWITTER_CLIENT_ID: process.env.TWITTER_CLIENT_ID,

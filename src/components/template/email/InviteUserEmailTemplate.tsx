@@ -51,7 +51,7 @@ export const InviteUserEmailTemplate = ({
                                 <Column>
                                     <Img
                                         src={`${baseUrl}/images/launch-ph.png`}
-                                        alt="CodePilot"
+                                        alt="Jobsleak"
                                         className="my-0  mx-auto w-full min-h-[150px]  object-cover"
                                     />
                                 </Column>
@@ -67,7 +67,7 @@ export const InviteUserEmailTemplate = ({
                             </Text>
                             <Text className="text-[#0F0F0F] text-base  mb-6 leading-[24px]">
                                 Join
-                                <Link href="https://www.codepilot.dev" target="_blank" className="text-blue-600 ml-1 no-underline">Codepilot </Link>
+                                <Link href="https://jobsleak.com" target="_blank" className="text-blue-600 ml-1 no-underline">Jobsleak </Link>
 
                                 today and gain access to a curated directory of the most innovative AI & software solutions on the market.
                             </Text>
@@ -100,7 +100,7 @@ export const InviteUserEmailTemplate = ({
                                 <Img
                                     src={`${baseUrl}/images/email-footer-logo.png`}
 
-                                    alt="CodePilot"
+                                    alt="Jobsleak"
                                     className="my-0  mx-auto"
                                     width={"142"}
                                     height={"35"}
@@ -125,8 +125,8 @@ export const InviteUserEmailTemplate = ({
 };
 
 InviteUserEmailTemplate.PreviewProps = {
-    organizationName: "Codepilot",
-    acceptInviteLink: "https://codepilot.dev/confirm/1234567890",
+    organizationName: "Jobsleak",
+    acceptInviteLink: "https://jobsleak.com/confirm/1234567890",
 } as InviteUserEmailTemplateProps;
 
 export default InviteUserEmailTemplate;

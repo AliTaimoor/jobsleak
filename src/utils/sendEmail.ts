@@ -58,10 +58,10 @@ export const sendResetPasswordEmail = async ({
   }
   try {
     const data = await resend.emails.send({
-      from: 'noreply <noreply@codepilot.dev>',
+      from: 'noreply <noreply@jobsleak.com>',
       to: [to],
       subject: subject,
-      react: ResetPasswordEmail({ resetPasswordLink: `${platformConfig.variables.NEXT_URL}/reset-password?token=${token}`, name: name, organizationName: "Codepilot" }) as React.ReactElement,
+      react: ResetPasswordEmail({ resetPasswordLink: `${platformConfig.variables.NEXT_URL}/reset-password?token=${token}`, name: name, organizationName: "Jobsleak" }) as React.ReactElement,
     });
     return { success: true, data: data }
   } catch (error: any) {
@@ -85,10 +85,10 @@ export const sendWelcomeWaitingListEmail = async ({
     return { success: false, error: "RESEND_API}KEY is not set" }
   }
   const data = await resend.emails.send({
-    from: 'noreply <noreply@codepilot.dev>',
+    from: 'noreply <noreply@jobsleak.com>',
     to: [to],
     subject: subject,
-    react: WelcomeWaitingListEmailTemplate({ organizationName: "Codepilot" }) as React.ReactElement,
+    react: WelcomeWaitingListEmailTemplate({ organizationName: "Jobsleak" }) as React.ReactElement,
   });
   return { success: true, data: data }
 }

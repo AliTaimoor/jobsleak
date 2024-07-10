@@ -98,7 +98,7 @@ export const VerificationEmail = ({
                                 <Img
                                     src={`${baseUrl}/images/email-footer-logo.png`}
 
-                                    alt="CodePilot"
+                                    alt="Jobsleak"
                                     className="my-0  mx-auto"
                                     width={"142"}
                                     height={"35"}
@@ -124,8 +124,8 @@ export const VerificationEmail = ({
 
 VerificationEmail.PreviewProps = {
     name: "Fortan",
-    confirmationEmail: "https://demo.codepilot.dev/confirm/1234567890",
-    organizationName: "Codepilot",
+    confirmationEmail: "https://jobsleak.com/confirm/1234567890",
+    organizationName: "Jobsleak",
 } as VerificationEmailProps;
 
 export default VerificationEmail;

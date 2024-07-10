@@ -64,10 +64,10 @@ export default function ForgotPasswordPage() {
 
     return (
         <FormContainer onSubmit={handleSubmit(onSubmit)} >
-            <Link href={siteUrls.general.home}>
+            {/* <Link href={siteUrls.general.home}>
                 <Image src="/images/logo.svg" alt="logo" width={150} height={50} className='dark:hidden' />
                 <Image src="/images/logo-dark.svg" alt="logo" width={150} height={50} className='hidden dark:block' />
-            </Link>
+            </Link> */}
             <div className='flex flex-col gap-8'>
                 <div>
 

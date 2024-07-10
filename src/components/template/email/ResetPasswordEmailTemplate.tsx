@@ -92,7 +92,7 @@ export const ResetPasswordEmail = ({
                                 <Img
                                     src={`${baseUrl}/images/email-footer-logo.png`}
 
-                                    alt="CodePilot"
+                                    alt="Jobsleak"
                                     className="my-0  mx-auto"
                                     width={"142"}
                                     height={"35"}
@@ -118,8 +118,8 @@ export const ResetPasswordEmail = ({
 
 ResetPasswordEmail.PreviewProps = {
     name: "Fortan",
-    resetPasswordLink: "https://codepilot.dev/confirm/1234567890",
-    organizationName: "CodePilot",
+    resetPasswordLink: "https://jobsleak.com/confirm/1234567890",
+    organizationName: "Jobsleak",
 } as ResetPasswordEmailProps;
 
 export default ResetPasswordEmail;

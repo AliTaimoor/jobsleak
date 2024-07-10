@@ -64,8 +64,8 @@ export default function Navbar() {
           className="  navbar p-0 max-w-8xl     font-medium text-base leading-[19px] text-grey-400 "
         >
           <div className="navbar-start w-full menu menu-horizontal">
-              <TopbarNavigationItem link="/" title="Jobsleak" />
-              {/* <Image src="/images/logo.svg" alt="logo" width={150} height={50} className='dark:hidden' />
+            <TopbarNavigationItem link="/" title="Jobsleak" />
+            {/* <Image src="/images/logo.svg" alt="logo" width={150} height={50} className='dark:hidden' />
                             <Image src="/images/logo-dark.svg" alt="logo" width={150} height={50} className='hidden dark:block' /> */}
           </div>
           <div className="navbar-center hidden lg:flex justify-center">
@@ -130,36 +130,45 @@ export default function Navbar() {
               <ThemeSwitcher />
 
               {session?.user && (
-                <div
-                  className="relative"
-                  onMouseEnter={() => setShow(true)}
-                  onMouseLeave={() => setShow(false)}
-                >
-                  <Avatar
-                    onClick={() => {
-                      setShow(!show);
-                    }}
-                    tabIndex={0}
-                    role="button"
-                    image={
-                      session?.user?.avatar ||
-                      "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                    }
-                    name={session?.user?.name ?? ""}
+                <>
+                  <div
+                    className="relative"
+                    onMouseEnter={() => setShow(true)}
+                    onMouseLeave={() => setShow(false)}
+                  >
+                    <Avatar
+                      onClick={() => {
+                        setShow(!show);
+                      }}
+                      tabIndex={0}
+                      role="button"
+                      image={
+                        session?.user?.avatar ||
+                        "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                      }
+                      name={session?.user?.name ?? ""}
+                    />
+                    <AccountModal
+                      email={session?.user?.email as string}
+                      name={
+                        session?.user?.name ||
+                        "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                      }
+                      image={
+                        session?.user?.avatar ||
+                        "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                      }
+                      shown={show}
+                    />
+                  </div>
+                  <Button
+                    variant="primary"
+                    className=" !min-w-[150px] !w-full  text-white "
+                    label="Dashboard"
+                    size="md"
+                    onClick={() => router.push(siteUrls.general.dashboard)}
                   />
-                  <AccountModal
-                    email={session?.user?.email as string}
-                    name={
-                      session?.user?.name ||
-                      "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                    }
-                    image={
-                      session?.user?.avatar ||
-                      "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                    }
-                    shown={show}
-                  />
-                </div>
+                </>
               )}
               {!session?.user && status !== "loading" && (
                 <Button

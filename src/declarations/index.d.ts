@@ -17,9 +17,9 @@ declare namespace NodeJS {
         NEXT_PUBLIC_PAGE_LIMIT: number;
         NEXT_PUBLIC_STRAPI_API_URL: string;
         NEXT_URL: string;
+        NEXT_PUBLIC_STRIPE_BASIC_PLAN_ID: string;
         NEXT_PUBLIC_STRIPE_PRO_PLAN_ID: string;
-        NEXT_PUBLIC_STRIPE_BUSINESS_PLAN_ID: string;
-        NEXT_PUBLIC_STRIPE_PREMIUM_PLAN_ID: string;
+        NEXT_PUBLIC_STRIPE_PRO_PLUS_PLAN_ID: string;
         NEXT_PUBLIC_STRIPE_PRO_YEARLY_PLAN_ID: string;
         NEXT_PUBLIC_STRIPE_BUSINESS_YEARLY__PLAN_ID: string;
         NEXT_PUBLIC_STRIPE_ADVANCED_PLAN_ID: string;

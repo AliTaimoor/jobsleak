@@ -7,8 +7,6 @@ import { useTranslation } from '@/lib/i18n/client';
 import AnimatedSection from '@/components/animated/AnimatedSection';
 import ContentSection from '@/containers/layout/ContentSection';
 
-
-
 const features = platformConfig.pricing.features;
 export default function Pricing({ showDescription = false }: { showDescription?: boolean }) {
     const { t } = useTranslation('landing')

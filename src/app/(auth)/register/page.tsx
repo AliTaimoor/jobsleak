@@ -77,10 +77,10 @@ export default function RegisterPage() {
     }
     return (
         <FormContainer onSubmit={handleSubmit(onSubmit)}>
-            <Link href={siteUrls.general.home}>
+            {/* <Link href={siteUrls.general.home}>
                 <Image src="/images/logo.svg" alt="logo" width={150} height={50} className='dark:hidden' />
                 <Image src="/images/logo-dark.svg" alt="logo" width={150} height={50} className='hidden dark:block' />
-            </Link>
+            </Link> */}
             <div className='flex flex-col gap-8'>
                 <div>
 
@@ -160,7 +160,8 @@ export default function RegisterPage() {
                         <Button variant="primary" type="submit" className="w-full" label={t("registerPage.createAccount")} size='lg' loading={loading} />
                     </div>
                 </div>
-                <div className="relative flex  items-center py-3">
+                <Typography type="p" className='mt-2  text-grey-700'>Already have an account? <Link href="/login" className='text-primary'>Sign In</Link></Typography>
+                {/* <div className="relative flex  items-center py-3">
                     <div className="flex-grow border-t border-grey-400"></div>
                     <span className="flex-shrink mx-4 text-sm text-grey-400">OR</span>
                     <div className="flex-grow border-t border-grey-400"></div>
@@ -169,7 +170,7 @@ export default function RegisterPage() {
                     <div className='flex gap-2 flex-col'>
                         <AuthButton onClick={() => { signIn('google', { callbackUrl: '/dashboard' }) }} content={t("registerPage.signWithGoogle")} icon={<GoogleIcon />} />
                     </div>
-                </div>
+                </div> */}
             </div>
         </FormContainer>
 

@@ -36,15 +36,15 @@
         "getStarted": "Loslegen"
     },
     "metadata": {
-        "title": "Codepilot - Das ultimative SaaS-Starterkit",
+        "title": "Jobsleak - Das ultimative SaaS-Starterkit",
         "description": "Bereit, Ihren Entwicklungsprozess zu beschleunigen?"
     },
     "usedBy": {
         "title": "Genutzt von"
     },
     "ctaSection": {
-        "title": "Warum Codepilot verwenden?",
-        "description": "Codepilot beschleunigt die Entwicklung, indem es eine vorkonfigurierte Grundlage bietet, die Zeit spart, bewährte Praktiken gewährleistet und Skalierbarkeit erleichtert, wodurch Sie sich auf Innovation konzentrieren können.",
+        "title": "Warum Jobsleak verwenden?",
+        "description": "Jobsleak beschleunigt die Entwicklung, indem es eine vorkonfigurierte Grundlage bietet, die Zeit spart, bewährte Praktiken gewährleistet und Skalierbarkeit erleichtert, wodurch Sie sich auf Innovation konzentrieren können.",
         "reasons": [
             {
                 "metric": "40%",
@@ -82,19 +82,19 @@
         "testimonials": [
             {
                 "name": "Alex Johnson",
-                "content": "Codepilot war ein Wendepunkt für unser Startup. Die Reduzierung der Entwicklungszeit ermöglichte es uns, unsere App Wochen vor dem Zeitplan zu starten, was uns einen signifikanten Vorteil in einem wettbewerbsintensiven Markt verschaffte. Ich empfehle es jedem Team, das schnell einen Unterschied machen möchte",
+                "content": "Jobsleak war ein Wendepunkt für unser Startup. Die Reduzierung der Entwicklungszeit ermöglichte es uns, unsere App Wochen vor dem Zeitplan zu starten, was uns einen signifikanten Vorteil in einem wettbewerbsintensiven Markt verschaffte. Ich empfehle es jedem Team, das schnell einen Unterschied machen möchte",
                 "role": "CTO von StartTech Innovations",
                 "avatar": "/images/testimonials/alex-johnson.jpeg"
             },
             {
                 "name": "Samantha Lee",
-                "content": "Die Implementierung von Codepilot in unseren Entwicklungsworkflow hat unsere Effizienz dramatisch verbessert. Die vorkonfigurierten Umgebungen und Best Practices, die in der Plattform eingebettet sind, haben unsere Einarbeitungszeit für neue Entwickler erheblich reduziert.",
+                "content": "Die Implementierung von Jobsleak in unseren Entwicklungsworkflow hat unsere Effizienz dramatisch verbessert. Die vorkonfigurierten Umgebungen und Best Practices, die in der Plattform eingebettet sind, haben unsere Einarbeitungszeit für neue Entwickler erheblich reduziert.",
                 "role": "Projektmanagerin bei Digital Solutions Corp.",
                 "avatar": "/images/testimonials/samanta.jpeg"
             },
             {
                 "name": "Ethan Rivera",
-                "content": "Als Freelancer zählt jede Minute, und Codepilot war entscheidend dabei, mir zu helfen, qualitativ hochwertige Arbeit unter engen Fristen zu liefern. Die Benutzerfreundlichkeit in Kombination mit leistungsstarken Anpassungsoptionen bedeutet, dass ich ohne jedes Mal von vorne beginnen zu müssen, den vielfältigen Bedürfnissen meiner Kunden gerecht werden kann.",
+                "content": "Als Freelancer zählt jede Minute, und Jobsleak war entscheidend dabei, mir zu helfen, qualitativ hochwertige Arbeit unter engen Fristen zu liefern. Die Benutzerfreundlichkeit in Kombination mit leistungsstarken Anpassungsoptionen bedeutet, dass ich ohne jedes Mal von vorne beginnen zu müssen, den vielfältigen Bedürfnissen meiner Kunden gerecht werden kann.",
                 "role": "Freiberuflicher App-Entwickler",
                 "avatar": "/images/testimonials/ethan.jpeg"
             }
@@ -123,8 +123,8 @@
         "year": "Jahr"
     },
     "footer": {
-        "description": "Codepilot beschleunigt die Entwicklung, indem es eine vorkonfigurierte Grundlage bietet, die Zeit spart, bewährte Praktiken gewährleistet und Skalierbarkeit erleichtert, wodurch Sie sich auf Innovation konzentrieren können.",
-        "footnote": "@%Date% Codepilot. Alle Rechte vorbehalten.",
+        "description": "Jobsleak beschleunigt die Entwicklung, indem es eine vorkonfigurierte Grundlage bietet, die Zeit spart, bewährte Praktiken gewährleistet und Skalierbarkeit erleichtert, wodurch Sie sich auf Innovation konzentrieren können.",
+        "footnote": "@%Date% Jobsleak. Alle Rechte vorbehalten.",
         "links": [
             {
                 "title": "Dienstleistungen",
@@ -189,35 +189,35 @@
     },
     "faq": {
         "title": "Häufig gestellte Fragen",
-        "description": "Hier sind einige häufige Fragen zu Codepilot. Für weitere Informationen kontaktieren Sie bitte unser Support-Team.",
+        "description": "Hier sind einige häufige Fragen zu Jobsleak. Für weitere Informationen kontaktieren Sie bitte unser Support-Team.",
         "faqs": [
             {
-                "question": "Was ist Codepilot?",
-                "answer": "Codepilot ist ein umfassendes SaaS-Boilerplate, das entwickelt wurde, um Entwicklern zu helfen, Anwendungen schneller zu starten, indem es eine vorkonfigurierte Grundlage bietet, bewährte Praktiken gewährleistet und Skalierbarkeit erleichtert."
+                "question": "Was ist Jobsleak?",
+                "answer": "Jobsleak ist ein umfassendes SaaS-Boilerplate, das entwickelt wurde, um Entwicklern zu helfen, Anwendungen schneller zu starten, indem es eine vorkonfigurierte Grundlage bietet, bewährte Praktiken gewährleistet und Skalierbarkeit erleichtert."
             },
             {
-                "question": "Wie kann Codepilot die Entwicklungszeit reduzieren?",
-                "answer": "Codepilot reduziert die Entwicklungszeit, indem es anpassbare Vorlagen und modernste Werkzeuge bietet, die die Notwendigkeit eliminieren, von Grund auf neu zu beginnen, und es Entwicklern ermöglichen, sich auf die Erstellung einzigartiger Funktionen zu konzentrieren."
+                "question": "Wie kann Jobsleak die Entwicklungszeit reduzieren?",
+                "answer": "Jobsleak reduziert die Entwicklungszeit, indem es anpassbare Vorlagen und modernste Werkzeuge bietet, die die Notwendigkeit eliminieren, von Grund auf neu zu beginnen, und es Entwicklern ermöglichen, sich auf die Erstellung einzigartiger Funktionen zu konzentrieren."
             },
             {
-                "question": "Ist Codepilot für Anfänger geeignet?",
-                "answer": "Ja, Codepilot ist benutzerfreundlich für Anfänger konzipiert, bietet aber auch fortgeschrittene Funktionen für erfahrene Entwickler, was es zu einem idealen Werkzeug für Projekte jeder Größe und Komplexität macht."
+                "question": "Ist Jobsleak für Anfänger geeignet?",
+                "answer": "Ja, Jobsleak ist benutzerfreundlich für Anfänger konzipiert, bietet aber auch fortgeschrittene Funktionen für erfahrene Entwickler, was es zu einem idealen Werkzeug für Projekte jeder Größe und Komplexität macht."
             },
             {
-                "question": "Kann ich Codepilot für kommerzielle Projekte verwenden?",
-                "answer": "Absolut. Codepilot ist darauf ausgelegt, sowohl persönliche als auch kommerzielle Projekte zu unterstützen, indem es die Skalierbarkeit und Robustheit bietet, die für Unternehmensanwendungen erforderlich sind."
+                "question": "Kann ich Jobsleak für kommerzielle Projekte verwenden?",
+                "answer": "Absolut. Jobsleak ist darauf ausgelegt, sowohl persönliche als auch kommerzielle Projekte zu unterstützen, indem es die Skalierbarkeit und Robustheit bietet, die für Unternehmensanwendungen erforderlich sind."
             },
             {
-                "question": "Welche Art von Unterstützung bietet Codepilot?",
-                "answer": "Codepilot bietet umfassende Unterstützung durch Dokumentation, ein engagiertes Support-Team und ein Community-Forum, in dem Benutzer Einblicke teilen und Hilfe von anderen Entwicklern suchen können."
+                "question": "Welche Art von Unterstützung bietet Jobsleak?",
+                "answer": "Jobsleak bietet umfassende Unterstützung durch Dokumentation, ein engagiertes Support-Team und ein Community-Forum, in dem Benutzer Einblicke teilen und Hilfe von anderen Entwicklern suchen können."
             },
             {
-                "question": "Wie oft wird Codepilot aktualisiert?",
-                "answer": "Codepilot wird regelmäßig aktualisiert, um die neuesten Entwicklungs-Trends, Sicherheitspatches und Community-Feedback zu integrieren und sicherzustellen, dass es an der Spitze der Technologie bleibt."
+                "question": "Wie oft wird Jobsleak aktualisiert?",
+                "answer": "Jobsleak wird regelmäßig aktualisiert, um die neuesten Entwicklungs-Trends, Sicherheitspatches und Community-Feedback zu integrieren und sicherzustellen, dass es an der Spitze der Technologie bleibt."
             },
             {
-                "question": "Bietet Codepilot Anpassungsoptionen?",
-                "answer": "Ja, Codepilot bietet umfangreiche Anpassungsoptionen, um sicherzustellen, dass Entwickler ihre Projekte an spezifische Anforderungen anpassen können, was es zu einer flexiblen Lösung für eine breite Palette von Anwendungen macht."
+                "question": "Bietet Jobsleak Anpassungsoptionen?",
+                "answer": "Ja, Jobsleak bietet umfangreiche Anpassungsoptionen, um sicherzustellen, dass Entwickler ihre Projekte an spezifische Anforderungen anpassen können, was es zu einer flexiblen Lösung für eine breite Palette von Anwendungen macht."
             }
         ]
     }

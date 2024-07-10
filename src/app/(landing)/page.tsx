@@ -15,8 +15,8 @@ export async function generateMetadata(props: any): Promise<Metadata> {
       title: t('metadata.title'),
       description: t('metadata.description'),
       locale: props.searchParams.locale ?? getLocale(),
-      siteName: 'Codepilot',
-      url: 'www.Codepilot.dev',
+      siteName: 'Jobsleak',
+      url: 'jobsleak.com',
       images: [`${platformConfig.variables.NEXT_URL}/images/og-demo-landing.png`],
 
     },

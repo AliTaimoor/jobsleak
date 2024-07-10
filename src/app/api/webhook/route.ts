@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import stripe from "@/utils/stripe";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
+import platformConfig from "@/config/app-config";
 
 
 export async function POST(request: Request) {
@@ -51,7 +52,7 @@ export async function POST(request: Request) {
                 const payment_intent = await stripe.paymentIntents.retrieve(payment_intent_id);
 
                 try {
-                    await stripe.subscriptions.update(
+                    const sub = await stripe.subscriptions.update(
                         subscription_id,
                         {
                             default_payment_method: payment_intent.payment_method as string ?? undefined,
@@ -60,13 +61,22 @@ export async function POST(request: Request) {
 
                     console.log("Default payment method set for subscription:" + payment_intent.payment_method);
 
+                    let quota = 0;
+                    const priceId = sub.items.data[0].price.id;
+                    if(priceId === platformConfig.pricing.plans.basic.planId)
+                        quota = platformConfig.pricing.plans.basic.quota;
+                    else if(priceId === platformConfig.pricing.plans.pro.planId)
+                        quota = platformConfig.pricing.plans.pro.quota;
+                    else if(priceId === platformConfig.pricing.plans.proPlus.planId)
+                        quota = platformConfig.pricing.plans.proPlus.quota;
+
                     await prisma.subscription.update({
                         where: {
                             stripeSubscriptionId: subscription_id,
                         },
                         data: {
                             status: "active",
-                            totalQuota: 2000,
+                            totalQuota: quota,
                             usedQuota: 0
                         }
                     });
@@ -124,7 +134,7 @@ export async function POST(request: Request) {
                     priceId: subscription.items.data[0].price.id,
                     userId: subscription.metadata.userId,
                     teamId: subscription.metadata.teamId,
-                    totalQuota: 2000,
+                    totalQuota: 0,
                     usedQuota: 0
                 }
             });
